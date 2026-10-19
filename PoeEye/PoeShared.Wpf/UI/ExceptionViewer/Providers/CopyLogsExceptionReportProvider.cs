@@ -52,7 +52,7 @@ internal sealed class CopyLogsExceptionReportProvider : IExceptionReportItemProv
                 logFile.CopyTo(destinationFileName, true);
                 new ExceptionReportItem
                 {
-                    Description = $"Created: {logFile.CreationTime}\nLast Modified: {logFile.LastWriteTime}",
+                    Description = $"생성: {logFile.CreationTime}\n마지막 수정: {logFile.LastWriteTime}",
                     Attachment = new FileInfo(destinationFileName),
                     Attached = idx < logsToAttach
                 }.AddTo(result);

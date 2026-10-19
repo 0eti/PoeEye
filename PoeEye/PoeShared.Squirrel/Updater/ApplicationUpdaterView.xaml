@@ -29,7 +29,7 @@
                         Command="{Binding RestartCommand}"
                         Icon="&#xf2d0;">
                         <eye:ButtonEx.Content>
-                            <TextBlock Text="Restart application" />
+                            <TextBlock Text="앱 다시 시작" />
                         </eye:ButtonEx.Content>
                         <eye:ButtonEx.Visibility>
                             <MultiBinding Converter="{StaticResource MultiBooleanAllTrueToVisibleFalseToCollapsedConverter}">
@@ -48,7 +48,7 @@
                         ToolTip="{Binding UpdateInfo}">
                         <eye:ButtonEx.Content>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Install" />
+                                <TextBlock Text="설치" />
                                 <StackPanel Orientation="Horizontal" Margin="15,0,0,0"
                                             Visibility="{Binding TotalUpdateSize, Converter={StaticResource GreaterThanZero64BitToVisibleConverter}}">
                                     <TextBlock Style="{StaticResource IconTextBlock}"

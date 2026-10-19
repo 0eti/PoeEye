@@ -60,13 +60,13 @@
                                       IsEnabled="{Binding PreviousVersionEntry, Converter={StaticResource NullToFalseConverter}}"
                                       Icon="{x:Static themes:AwesomeIcons.RotateLeft}">
                             <eye:ButtonEx.Content>
-                                <TextBlock Text="{Binding PreviousVersionEntry.Version, StringFormat='Rollback to previous version v{0}', FallbackValue='Rollback is not available yet'}" />
+                                <TextBlock Text="{Binding PreviousVersionEntry.Version, StringFormat='이전 버전 v{0}(으)로 되돌리기', FallbackValue='아직 되돌릴 버전이 없습니다'}" />
                             </eye:ButtonEx.Content>
                         </eye:ButtonEx>
                         <CheckBox x:Name="ShowAdvanced"
                                   HorizontalAlignment="Center"
                                   IsChecked="{Binding ShowAdvanced}"
-                                  Content="Advanced" />
+                                  Content="고급" />
                     </st:AutoGrid>
 
                     <eye:CachedContentControl Content="{Binding ApplicationUpdater}"
@@ -78,7 +78,7 @@
                                    IsEnabled="{Binding ApplicationUpdater.IsBusy, Converter={StaticResource NotConverter}}">
                         <st:StackPanel Orientation="Horizontal" MarginBetweenChildren="5" Height="30"
                                        IsEnabled="{Binding UpdateSourceProvider.KnownSources.Count, Converter={StaticResource NullToFalseConverter}}">
-                            <TextBlock Text="Update channel:" Width="350" TextAlignment="Right" />
+                            <TextBlock Text="업데이트 채널:" Width="350" TextAlignment="Right" />
                             <ComboBox st:StackPanel.Fill="Fill"
                                       ItemsSource="{Binding UpdateSourceProvider.KnownSources}"
                                       DisplayMemberPath="Name"
@@ -88,7 +88,7 @@
 
                         <st:StackPanel Orientation="Horizontal" MarginBetweenChildren="5" Height="30"
                                        IsEnabled="{Binding ApplicationUpdater.AvailableReleases.Count, Converter={StaticResource NullToFalseConverter}}">
-                            <TextBlock Text="Specify version:" Width="350" TextAlignment="Right" />
+                            <TextBlock Text="버전 지정:" Width="350" TextAlignment="Right" />
                             <ComboBox st:StackPanel.Fill="Fill"
                                       ItemsSource="{Binding ApplicationUpdater.AvailableReleases}"
                                       DisplayMemberPath="Version"
@@ -98,10 +98,10 @@
 
                     <st:AutoGrid Columns="140,*,140" x:Name="ControlsView"
                                  IsEnabled="{Binding ApplicationUpdater.IsBusy, Converter={StaticResource NotConverter}}">
-                        <eye:ButtonEx Command="{Binding TerminateCommand}" Content="Terminate" Icon="{x:Static themes:AwesomeIcons.SignOut}"
+                        <eye:ButtonEx Command="{Binding TerminateCommand}" Content="종료" Icon="{x:Static themes:AwesomeIcons.SignOut}"
                                       Visibility="{Binding AllowTermination, Converter={StaticResource TrueToVisibleFalseToCollapsedConverter}}" />
                         <Separator Visibility="Hidden" st:StackPanel.Fill="Fill" />
-                        <eye:ButtonEx Command="{Binding CloseCommand}" Content="Continue" Icon="{x:Static themes:AwesomeIcons.SignIn}" />
+                        <eye:ButtonEx Command="{Binding CloseCommand}" Content="계속" Icon="{x:Static themes:AwesomeIcons.SignIn}" />
                     </st:AutoGrid>
                 </st:StackPanel>
                 <DataTemplate.Triggers>
@@ -142,7 +142,7 @@
                                       eye:CommandWrapperHelper.Icon="{x:Static themes:AwesomeIcons.CloudDownload}">
                 <eye:CachedContentControl.ToolTip>
                     <TextBlock
-                        Text="{Binding ApplicationUpdater.UpdateSource.Name, StringFormat='Check for updates @ {0}'}" />
+                        Text="{Binding ApplicationUpdater.UpdateSource.Name, StringFormat='업데이트 확인 @ {0}'}" />
                 </eye:CachedContentControl.ToolTip>
             </eye:CachedContentControl>
         </mah:WindowCommands>

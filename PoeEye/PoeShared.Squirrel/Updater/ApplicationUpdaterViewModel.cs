@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
@@ -59,7 +59,7 @@ internal sealed class ApplicationUpdaterViewModel : DisposableReactiveObject, IA
 
         CheckForUpdatesCommand
             .ThrownExceptions
-            .SubscribeToErrors(ex => SetError($"Update error: {ex.Message}"))
+            .SubscribeToErrors(ex => SetError($"업데이트 오류: {ex.Message}"))
             .AddTo(Anchors);
 
         configProvider.ListenTo(x => x.AutoUpdateTimeout)
@@ -111,7 +111,7 @@ internal sealed class ApplicationUpdaterViewModel : DisposableReactiveObject, IA
 
         RestartCommand
             .ThrownExceptions
-            .SubscribeSafe(ex => SetError($"Restart error: {ex.Message}"), Log.HandleUiException)
+            .SubscribeSafe(ex => SetError($"다시 시작 오류: {ex.Message}"), Log.HandleUiException)
             .AddTo(Anchors);
             
         configProvider
@@ -196,7 +196,7 @@ internal sealed class ApplicationUpdaterViewModel : DisposableReactiveObject, IA
         Log.Debug(() => $"Force update preparation requested, target: {new { targetRelease.Version, targetRelease.Filename, targetRelease.Filesize }}");
         LatestUpdate = await updaterModel.PrepareForceUpdate(targetRelease);
         updaterModel.Reset();
-        SetStatus($"Ready to update to v{LatestVersion}");
+        SetStatus($"v{LatestVersion}(으)로 업데이트할 준비가 됐습니다");
     }
 
     private void ShowUpdaterCommandExecuted(object arg)
@@ -248,7 +248,7 @@ internal sealed class ApplicationUpdaterViewModel : DisposableReactiveObject, IA
             return;
         }
 
-        SetStatus("Checking for updates...");
+        SetStatus("업데이트 확인 중...");
         var sw = Stopwatch.StartNew();
         LatestUpdate = default;
         updaterModel.Reset();
@@ -274,18 +274,18 @@ internal sealed class ApplicationUpdaterViewModel : DisposableReactiveObject, IA
             if (newVersion.ReleasesToApply.Any())
             {
                 IsOpen = true;
-                SetStatus($"New version v{LatestVersion} is available");
+                SetStatus($"새 버전 v{LatestVersion}이(가) 있습니다");
             }
             else
             {
-                SetStatus("No updates found");
+                SetStatus("업데이트가 없습니다");
             }
         }
         catch (Exception ex)
         {
             Log.HandleException(ex);
             IsOpen = true;
-            SetError($"Failed to check for updates, UpdateSource: {UpdateSource} - {ex.Message}");
+            SetError($"업데이트를 확인하지 못했습니다, 업데이트 출처: {UpdateSource} - {ex.Message}");
         }
     }
 
@@ -299,7 +299,7 @@ internal sealed class ApplicationUpdaterViewModel : DisposableReactiveObject, IA
             return;
         }
 
-        SetStatus($"Preparing update v{LatestVersion}...");
+        SetStatus($"v{LatestVersion} 업데이트 준비 중...");
 
         if (LatestUpdate == null)
         {
@@ -312,7 +312,7 @@ internal sealed class ApplicationUpdaterViewModel : DisposableReactiveObject, IA
         {
             await updaterModel.ApplyRelease(LatestUpdate);
             IsOpen = true;
-            SetStatus($"Successfully updated to v{LatestVersion}");
+            SetStatus($"v{LatestVersion}(으)로 업데이트했습니다");
             LatestUpdate = default;
             await RestartCommandExecuted();
         }
@@ -320,7 +320,7 @@ internal sealed class ApplicationUpdaterViewModel : DisposableReactiveObject, IA
         {
             Log.HandleException(ex);
             IsOpen = true;
-            SetError($"Failed to apply update to v{LatestVersion}, UpdateSource: {UpdateSource} - {ex.Message}");
+            SetError($"v{LatestVersion} 업데이트를 적용하지 못했습니다, 업데이트 출처: {UpdateSource} - {ex.Message}");
         }
     }
 
@@ -344,7 +344,7 @@ internal sealed class ApplicationUpdaterViewModel : DisposableReactiveObject, IA
         try
         {
             IsOpen = true;
-            SetStatus("Restarting application...");
+            SetStatus("앱을 다시 시작하는 중...");
 
             await updaterModel.RestartApplicationViaLauncher();
         }
@@ -353,7 +353,7 @@ internal sealed class ApplicationUpdaterViewModel : DisposableReactiveObject, IA
             IsOpen = true;
 
             Log.HandleUiException(ex);
-            SetError($"Failed to restart application - {ex.Message}");
+            SetError($"앱을 다시 시작하지 못했습니다 - {ex.Message}");
         }
     }
 }

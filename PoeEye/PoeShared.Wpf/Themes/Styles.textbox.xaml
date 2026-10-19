@@ -269,7 +269,7 @@
                                     <wpf:IgnoreMouseWheelBehavior IsEnabled="True" />
                                 </i:Interaction.Behaviors>
                             </TextBox>
-                            <CheckBox ToolTip="Expand editor"
+                            <CheckBox ToolTip="편집기 펼치기"
                                       x:Name="EditorToggle"
                                       Style="{StaticResource ToggleCheckBoxStyle}">
                                 <TextBlock Text="&#xf0f6;" Style="{StaticResource IconTextBlock}" />

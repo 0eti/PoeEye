@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -134,20 +134,20 @@ internal sealed class ExceptionDialogViewModel : DisposableReactiveObject
         try
         {
             Log.Debug(() => $"Saving report to temporary file {tempFile}");
-            Status = "Compressing report...";
+            Status = "보고서 압축 중...";
             await CompressReport(tempFile);
             Log.Debug(() => $"Report saved to temporary file {tempFile}, sending to {Config.ReportHandler}");
-            Status = "Sending report...";
+            Status = "보고서 보내는 중...";
             var result = await Config.ReportHandler.Handle(tempFile);
             Log.Debug(() => $"Report sent to {Config.ReportHandler}: {result}");
             SentReportId = result;
-            Status = $"Report sent";
-            await messageBoxService.ShowMessage("Report sent successfully", $"Your report has Id {result}. Feel free to send this Id via Discord or by any other means if you consider this bug important, this will speed up processing process");
+            Status = $"보고서를 보냈습니다";
+            await messageBoxService.ShowMessage("보고서 전송 완료", $"보고서 ID는 {result}입니다. 중요한 버그라고 생각되면 이 ID를 Discord 등으로 개발자에게 알려 주세요. 처리가 빨라집니다");
         }
         catch (Exception ex)
         {
             Log.Error($"Failed to send report to {Config.ReportHandler}", ex);
-            Status = $"Failed to send report - {ex.Message}";
+            Status = $"보고서를 보내지 못했습니다 - {ex.Message}";
             throw;
         }
         finally
@@ -168,18 +168,18 @@ internal sealed class ExceptionDialogViewModel : DisposableReactiveObject
 
     private async Task SaveReportCommandExecuted()
     {
-        Status = "Selecting directory...";
+        Status = "저장할 위치 선택 중...";
         var initialDirectory = Path.GetDirectoryName(LastSavedFile);
         var defaultFileName = GetDefaultReportName();
 
         var op = new SaveFileDialog
         {
-            Title = "Select where to save report",
+            Title = "보고서를 저장할 위치 선택",
             FileName = defaultFileName,
             InitialDirectory = !string.IsNullOrEmpty(initialDirectory) && Directory.Exists(initialDirectory)
                 ? initialDirectory
                 : KnownFolders.Downloads.ExpandedPath,
-            Filter = "7z Archive|*.7z;|All files|*.*"
+            Filter = "7z 압축 파일|*.7z;|모든 파일|*.*"
         };
         if (op.ShowDialog() != true)
         {
@@ -189,11 +189,11 @@ internal sealed class ExceptionDialogViewModel : DisposableReactiveObject
         }
         LastSavedFile = op.FileName;
 
-        Status = "Compressing report...";
+        Status = "보고서 압축 중...";
         await CompressReport(new FileInfo(op.FileName));
         Log.Debug("Compression completed, opening Explorer");
 
-        Status = "Compressing report...";
+        Status = "보고서 압축 중...";
         Log.Debug(() => $"Opening link: {op.FileName}");
         var process = Process.Start(ExplorerExecutablePath, $"/select,\"{op.FileName}\"");
         if (process == null)
@@ -202,7 +202,7 @@ internal sealed class ExceptionDialogViewModel : DisposableReactiveObject
         }
 
         await process.WaitForExitAsync();
-        Status = "Report saved";
+        Status = "보고서를 저장했습니다";
     }
 
     private async Task CompressReport(FileInfo outputFile)

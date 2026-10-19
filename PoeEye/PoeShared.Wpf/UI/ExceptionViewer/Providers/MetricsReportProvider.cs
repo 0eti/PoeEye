@@ -38,7 +38,7 @@ internal sealed class MetricsReportProvider : IExceptionReportItemProvider
                 logFile.CopyTo(destinationFileName, true);
                 new ExceptionReportItem
                 {
-                    Description = $"Performance metrics",
+                    Description = $"성능 지표",
                     Attachment = new FileInfo(destinationFileName),
                     Attached = true
                 }.AddTo(result);

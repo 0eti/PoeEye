@@ -57,12 +57,12 @@
                        ItemTemplate="{StaticResource NotificationTypeWrapperTextBlock}" />
 
              <eye:ButtonEx Command="{Binding AddSoundCommand}"
-                           ToolTip="Load from file"
+                           ToolTip="파일에서 불러오기"
                            Icon="&#xf115;" 
-                           Content="Load..."/>
+                           Content="불러오기..."/>
 
             <DockPanel>
-                <TextBlock DockPanel.Dock="Left" Text="Volume" />
+                <TextBlock DockPanel.Dock="Left" Text="볼륨" />
                 <TextBlock DockPanel.Dock="Right" MinWidth="20"
                            Text="{Binding Volume, Converter={StaticResource DoubleToPercentConverter},  StringFormat='{}{0:F2}%'}" />
                 <Slider DockPanel.Dock="Left"
@@ -99,7 +99,7 @@
                     <eye:MouseButtonsTooltip
                         LeftButton="Select Audio notification">
                         <eye:MouseButtonsTooltip.MouseToolTip>
-                            <TextBlock Text="{Binding SelectedValue, Mode=OneWay, StringFormat='Notification: {0}'}" />
+                            <TextBlock Text="{Binding SelectedValue, Mode=OneWay, StringFormat='알림음: {0}'}" />
                         </eye:MouseButtonsTooltip.MouseToolTip>
                     </eye:MouseButtonsTooltip>
                 </ToggleButton.ToolTip>

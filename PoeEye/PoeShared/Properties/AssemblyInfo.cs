@@ -1,4 +1,4 @@
-global using System;
+﻿global using System;
 global using System.Collections.Generic;
 global using System.IO;
 global using System.Linq;
@@ -18,8 +18,8 @@ global using System.Threading;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-[assembly: AssemblyVersion("0.0.0.0")]
-[assembly: AssemblyFileVersion("0.0.0.0")]
+[assembly: AssemblyVersion("1.0.254.0")]
+[assembly: AssemblyFileVersion("1.0.254.0")]
 [assembly: AssemblyMetadata("SquirrelAwareVersion", "0")]
 
 [assembly: InternalsVisibleTo("PoeShared.Benchmarks")]

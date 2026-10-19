@@ -48,7 +48,7 @@ internal sealed class UpdaterWindowViewModel : DisposableReactiveObject, IUpdate
         ErrorMonitor = errorMonitor;
         Disposable.Create(() => Log.Info("Disposing Updater view model")).AddTo(Anchors);
         ApplicationUpdater = appUpdater.AddTo(Anchors);
-        Title = $"{appArguments.AppTitle} UPDATER";
+        Title = $"{appArguments.AppTitle} 업데이터";
         Message = args.Message;
         MessageLevel = args.MessageLevel;
         AllowTermination = args.AllowTermination;

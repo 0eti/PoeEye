@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -155,13 +155,13 @@ internal sealed class AudioNotificationSelectorViewModel : DisposableReactiveObj
 
         var op = new OpenFileDialog
         {
-            Title = "Select an image", 
+            Title = "알림음 파일 선택", 
             InitialDirectory = !string.IsNullOrEmpty(LastOpenedDirectory) && Directory.Exists(LastOpenedDirectory) 
                 ? LastOpenedDirectory
                 : Environment.GetFolderPath(Environment.SpecialFolder.CommonMusic),
             CheckPathExists = true,
             Multiselect = false,
-            Filter = "All supported sound files|*.wav;*.mp3|All files|*.*"
+            Filter = "지원하는 소리 파일|*.wav;*.mp3|모든 파일|*.*"
         };
 
         if (op.ShowDialog() != true)

@@ -51,7 +51,7 @@ internal sealed class ReportLastLogEventsProvider : DisposableReactiveObject, IE
 
         yield return new ExceptionReportItem()
         {
-            Description = $"Last {lastEvents.Size} log records\nFirst: {head.TimeStamp}\nLast: {tail.TimeStamp}",
+            Description = $"최근 로그 {lastEvents.Size}개\n처음: {head.TimeStamp}\n마지막: {tail.TimeStamp}",
             Attachment = lastLogEvents
         };
     }

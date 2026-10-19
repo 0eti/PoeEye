@@ -48,7 +48,7 @@ internal sealed class CopyConfigReportItemProvider: IExceptionReportItemProvider
             configProviderFromFile.SaveToFile(configFromMemoryPath);
             reportItems.Add(new ExceptionReportItem()
             {
-                Description = $"In-memory config",
+                Description = $"현재 메모리의 설정",
                 Attachment = configFromMemoryPath,
                 Attached = false
             });
@@ -101,7 +101,7 @@ internal sealed class CopyConfigReportItemProvider: IExceptionReportItemProvider
             File.Copy(existingConfig, configCopy.FullName);
             reportItems.Add(new ExceptionReportItem()
             {
-                Description = $"Copy of {existingConfig}",
+                Description = $"{existingConfig} 사본",
                 Attachment = configCopy,
                 Attached = false
             });

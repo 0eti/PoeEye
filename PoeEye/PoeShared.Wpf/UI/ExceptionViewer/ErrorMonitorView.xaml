@@ -10,7 +10,7 @@
         <st:StackPanel Orientation="Horizontal">
             <ui:ButtonEx Command="{Binding ReportProblemCommand}"
                           Icon="&#xf071;"
-                          Content="Report a problem"/>
+                          Content="문제 보고"/>
             <ui:ButtonEx Command="{Binding ThrowExceptionCommand}" 
                           Visibility="{Binding ThrowExceptionCommand, Converter={StaticResource NullToCollapsedConverter}}"
                           Content="Throw"/>

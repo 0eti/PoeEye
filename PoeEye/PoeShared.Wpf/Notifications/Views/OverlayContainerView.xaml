@@ -37,7 +37,7 @@
                     </st:StackPanel>
                     <eye:ButtonEx Command="{Binding CloseCommand}" HorizontalAlignment="Right" VerticalAlignment="Top"
                                   Width="16" Height="16" Margin="0"
-                                  ToolTip="Close"
+                                  ToolTip="닫기"
                                   Icon="&#xf00d;">
                         <eye:ButtonEx.Visibility>
                             <MultiBinding Converter="{StaticResource MultiBooleanAllTrueToVisibleFalseToCollapsedConverter}">

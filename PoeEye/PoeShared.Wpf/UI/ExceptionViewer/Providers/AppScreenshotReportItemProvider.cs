@@ -45,7 +45,7 @@ internal sealed class AppScreenshotReportItemProvider : IExceptionReportItemProv
             item.Screenshot.Dispose();
             yield return new ExceptionReportItem()
             {
-                Description = $"Window {item.Window.Title}",
+                Description = $"창 {item.Window.Title}",
                 Attachment = new FileInfo(destinationFileName),
                 Attached = true
             };

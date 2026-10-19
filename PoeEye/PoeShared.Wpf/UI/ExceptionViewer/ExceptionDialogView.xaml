@@ -1,4 +1,4 @@
-<Window x:Class="PoeShared.UI.ExceptionDialogView"
+﻿<Window x:Class="PoeShared.UI.ExceptionDialogView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -69,7 +69,7 @@
         </Grid.RowDefinitions>
 
         <st:StackPanel Orientation="Horizontal">
-            <TextBlock Text="Comment on what were you doing when the problem occurred" />
+            <TextBlock Text="문제가 생겼을 때 무엇을 하고 있었는지 적어 주세요" />
             <TextBlock st:StackPanel.Fill="Fill"
                        Text="{Binding Config.Timestamp}"
                        HorizontalAlignment="Right" />
@@ -126,7 +126,7 @@
             <eye:ButtonEx
                 Command="{Binding CopyStatusToClipboard}"
                 HideIfDisabled="True"
-                ToolTip="Copy to clipboard"
+                ToolTip="클립보드에 복사"
                 Icon="&#xf0c5;" />
             <TextBlock Text="{Binding Status}" 
                        TextTrimming="CharacterEllipsis"
@@ -137,16 +137,16 @@
                 HideIfDisabled="True"
                 Command="{Binding SaveReportCommand}"
                 Icon="&#xf0c7;"
-                Content="Save..." />
+                Content="저장..." />
             <eye:ButtonEx
                 MinWidth="100"
                 HideIfDisabled="True"
                 Command="{Binding SendReportCommand}"
                 Icon="&#xf1d8;"
-                Content="Send" />
+                Content="보내기" />
             <eye:ButtonEx Command="{Binding CloseCommand}"
                           MinWidth="100"
-                          Content="Close" />
+                          Content="닫기" />
         </st:StackPanel>
     </Grid>
 </Window>

@@ -9,9 +9,9 @@
 
     <DataTemplate DataType="{x:Type viewModels:UpdateSettingsViewModel}">
         <st:AutoGrid Columns="240, *" RowHeight="40" ChildMargin="5" x:Name="UpdateSettingsRoot">
-            <TextBlock Text="Check for updates: " HorizontalAlignment="Right" />
+            <TextBlock Text="업데이트 확인: " HorizontalAlignment="Right" />
             <CheckBox IsChecked="{Binding CheckForUpdates}" ToolTip="{Binding UpdateSource}" />
-            <TextBlock Text="Updates channel: " HorizontalAlignment="Right" />
+            <TextBlock Text="업데이트 채널: " HorizontalAlignment="Right" />
             <ListBox ItemsSource="{Binding KnownSources}"
                      SelectedItem="{Binding UpdateSource}">
                 <ListBox.ItemContainerStyle>
@@ -43,10 +43,10 @@
                 </ListBox.ItemTemplate>
             </ListBox>
             <!-- Temporarily disabled - should be re-enabled only after supporting portable builds 
-            <TextBlock Text="Download full updates: " HorizontalAlignment="Right" IsEnabled="{Binding CheckForUpdates}"/>
+            <TextBlock Text="전체 업데이트 받기: " HorizontalAlignment="Right" IsEnabled="{Binding CheckForUpdates}"/>
             <CheckBox IsChecked="{Binding IgnoreDeltaUpdates}"
                       IsEnabled="{Binding CheckForUpdates}"
-                      ToolTip="Download full application updates instead of small patches. Enable this option if you encounter any problems during update process" />
+                      ToolTip="작은 패치 대신 앱 전체를 내려받아 업데이트합니다. 업데이트 중 문제가 생기면 켜 보세요" />
             -->
         </st:AutoGrid>
     </DataTemplate>

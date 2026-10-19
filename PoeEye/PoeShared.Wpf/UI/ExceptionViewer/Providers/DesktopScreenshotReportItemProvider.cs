@@ -14,7 +14,7 @@ internal sealed class DesktopScreenshotReportItemProvider : IExceptionReportItem
         image.Save(destinationFileName);
         yield return new ExceptionReportItem()
         {
-            Description = $"Desktop screenshot",
+            Description = $"바탕 화면 스크린샷",
             Attachment = new FileInfo(destinationFileName),
             Attached = false
         };

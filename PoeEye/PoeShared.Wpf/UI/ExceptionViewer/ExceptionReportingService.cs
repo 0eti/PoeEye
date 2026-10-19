@@ -182,7 +182,7 @@ internal sealed class ExceptionReportingService : DisposableReactiveObject, IExc
         var basicConfig = new ExceptionDialogConfig
         {
             AppName = appArguments.AppName,
-            Title = $"{appArguments.AppTitle} Error Report",
+            Title = $"{appArguments.AppTitle} 오류 보고",
             Timestamp = clock.Now,
             ReportHandler = reportHandler,
             Exception = exception
