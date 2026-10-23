@@ -202,6 +202,13 @@ public partial class UnsafeNative
         {
             Log.Warn($"Failed to ShowWindow({handle.ToHexadecimal()}), error: {error}");
         }
+
+        // Windows may push the window out of the topmost band while keeping WS_EX_TOPMOST set (it then ends up below regular windows),
+        // so the topmost position has to be re-asserted every time the window is shown
+        if (!User32.SetWindowPos(handle, User32.SpecialWindowHandles.HWND_TOPMOST, 0, 0, 0, 0, User32.SetWindowPosFlags.SWP_NOMOVE | User32.SetWindowPosFlags.SWP_NOSIZE | User32.SetWindowPosFlags.SWP_NOACTIVATE))
+        {
+            Log.Warn($"Failed to SetWindowPos({handle.ToHexadecimal()}, {User32.SpecialWindowHandles.HWND_TOPMOST}), error: {Kernel32.GetLastError()}");
+        }
     }
 
     public static void ShowInactiveTopmost(IntPtr handle, Rectangle windowBounds)
